@@ -36,7 +36,8 @@
 				}
 				document.getElementsByClassName('grid').item(0).style.gridTemplateColumns = 'repeat('+count+',50px)';
 			}
-			const slider = document.getElementById("mySlider");
+			createSquares();
+		const slider = document.getElementById("mySlider");
 
 			slider.addEventListener("input", function() {
 		    	for(var y = 0; y < count; y++){
