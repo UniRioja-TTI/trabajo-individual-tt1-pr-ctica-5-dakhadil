@@ -5,6 +5,7 @@ import modelo.DatosSimulation;
 import modelo.DatosSolicitud;
 import modelo.Entidad;
 import modelo.Punto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import utilidades.ServicioSimulacionClient;
 
@@ -21,8 +22,8 @@ public class ContactoSimService implements InterfazContactoSim {
     private final List<Entidad> entities;
     private final ServicioSimulacionClient client;
 
-    public ContactoSimService() {
-        this.client = new ServicioSimulacionClient("http://localhost:8080");
+    public ContactoSimService(@Value("${simulacion.base-url}") String baseUrl) {
+        this.client = new ServicioSimulacionClient(baseUrl);
         this.entities = new ArrayList<>();
 
         entities.add(entidad(1, "Alpha", "Entidad Alpha"));
