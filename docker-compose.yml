@@ -1,0 +1,19 @@
+services:
+  servicio-consumible:
+    image: javillour/servicio-tt1:amd64
+    networks:
+      - tt1-network
+
+  trabajo:
+    image: trabajo-tt1
+    ports:
+      - "8081:8081"
+    environment:
+      - SIMULACION_BASE_URL=http://servicio-consumible:8080
+    networks:
+      - tt1-network
+    depends_on:
+      - servicio-consumible
+
+networks:
+  tt1-network:
